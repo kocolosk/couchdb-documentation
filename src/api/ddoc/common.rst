@@ -220,53 +220,51 @@ The response from :get:`/{db}/_design/{ddoc}/_info` contains
 ==========================================
 
 .. http:put:: /{db}/_design/{ddoc}/_search_analyze
-	:synopsis: Tests the results of analyzer tokenization 
-	
-	Tests the results of analyzer tokenization by posting sample data to 
-	the ``_search_analyze`` endpoint.
+    :synopsis: Tests the results of analyzer tokenization
 
-	:param field: Type of analyzer 
-	:param text:  Analyzer token you want to test
-	:code 200: Request completed successfully
-	:code 400: Request body is wrong (malformed or missing one of the two mandatory fields)
-	:code 500: A server error (or other kind of error) occurred
+    Tests the results of analyzer tokenization by posting sample data to
+    the ``_search_analyze`` endpoint.
 
-	**Request to test the ``standard`` analyzer**:
+    :param field: Type of analyzer
+    :param text:  Analyzer token you want to test
+    :code 200: Request completed successfully
+    :code 400: Request body is wrong (malformed or missing one of the mandatory fields)
+    :code 500: A server error (or other kind of error) occurred
 
-	.. code-block:: http
+    **Request to test the ``standard`` analyzer**:
 
-		Host: $ACCOUNT.cloudant.com
-		POST /_search_analyze HTTP/1.1
-		Content-Type: application/json
-		{"analyzer”:”standard”, "text”:”running”}
+    .. code-block:: http
 
-  	**Result of testing the ``standard`` analyzer**:
+        Host: $ACCOUNT.cloudant.com
+        POST /_search_analyze HTTP/1.1
+        Content-Type: application/json
+        {"analyzer”:”standard”, "text”:”running”}
 
-	.. code-block:: http
+    **Result of testing the ``standard`` analyzer**:
 
-		{
-    			"tokens": [
-        			“running”
-    			]
-		}
+    .. code-block:: http
 
-	**Request to test the ``english`` analyzer**:
+        {
+            "tokens": [
+                “running”
+            ]
+        }
 
-	.. code-block:: http
+    **Request to test the ``english`` analyzer**:
 
-		Host: $ACCOUNT.cloudant.com
-		POST /_search_analyze HTTP/1.1
-		Content-Type: application/json
-		{"analyzer”:”english”, "text”:”running”}
+    .. code-block:: http
 
-  	**Result of testing the ``english`` analyzer**:
+        Host: $ACCOUNT.cloudant.com
+        POST /_search_analyze HTTP/1.1
+        Content-Type: application/json
+        {"analyzer”:”english”, "text”:”running”}
 
-	.. code-block:: http
+      **Result of testing the ``english`` analyzer**:
 
-		{
-   			 "tokens": [
-       			 “run”
-   			 ]
-		}
+    .. code-block:: http
 
-
+        {
+            "tokens": [
+                “run”
+            ]
+        }
